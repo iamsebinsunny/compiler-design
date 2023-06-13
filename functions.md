@@ -9,6 +9,9 @@
 3. is_digits:
     Function used to check if the given string is a number.
 
+4. start_main_function:
+    Function used to start and validate the main function.
+
 4. analyze_if_statement:
     Function used to implement if statement in the language.
 
