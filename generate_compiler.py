@@ -121,6 +121,8 @@ def analyzer(tokens):
     value_table = {}
     print("####################   Starting Compiler Execution  ######################\n")
     while index < len(tokens):
+        if tokens[index][1] == 'VOID_KEYWORD':
+            index = start_main_function(tokens, index, value_table)
         if tokens[index][1] in ['INTEGER_TYPE', 'FLOAT_TYPE']:
             index = analyze_assign_statements(tokens, index, value_table)
         elif tokens[index][1] == 'PRINT_KEYWORD':
@@ -137,12 +139,39 @@ def analyzer(tokens):
             index = analyze_function_call(tokens, index, value_table)
         elif tokens[index][1] == "NEWLINE":
             index += 1
+        elif tokens[index][1] == "RBRACE":
+            index += 1
         elif tokens[index][1] == "EOF":
             exit()
         else:
             print(f"#[ERROR] Syntax Error: Unexpected token {tokens[index]}")
             exit()
 
+def start_main_function(tokens, index, value_table):
+    if tokens[index][1] == 'VOID_KEYWORD':
+        index +=1
+
+        if tokens[index][1] == 'MAIN_KEYWORD':
+            index += 1
+
+            if tokens[index][1] == 'LPAREN':
+                index += 1
+
+                if tokens[index][1] == 'RPAREN':
+                    index += 1
+
+                    if tokens[index][1] == 'LBRACE':
+                        index += 1
+
+                        return index
+
+                    else:
+                        print("\n#[ERROR] Syntax Error: Missing {")
+                        exit()
+
+                else:
+                    print("\n#[ERROR] Syntax Error: Missing )")
+                    exit()
 
 def check_condition(condition_tokens, value_table):
     condition_str = ' '.join([token[0] for token in condition_tokens])
@@ -632,23 +661,25 @@ def analyze_assign_statements(tokens, index, value_table):
 
 
 code = '''
-    print("Welcome to our C compiler");
-    float a = 5.0;
-    int b = 10;
-    float c = (a+b)*2;
-    print(c);
-    if(a>b){
-        print("Control flow currently inside if loop");
-    }else{
-        print("Control flow currently inside if loop");
-    }
-    def add(int x, int y){
-        int sum = x + y;
-        print("Sum is" + sum);
-    }
-    add(5,4);
-    while(b>c){
-        b = b * 10;
+    void main(){
+        print("Welcome to our C compiler");
+        float a = 5.0;
+        int b = 10;
+        float c = (a+b)*2;
+        print(c);
+        if(a>b){
+            print("Control flow currently inside if loop");
+        }else{
+            print("Control flow currently inside if loop");
+        }
+        def add(int x, int y){
+            int sum = x + y;
+            print("Sum is" + sum);
+        }
+        add(5,4);
+        while(b>c){
+            b = b * 10;
+        }
     }
 
 '''
