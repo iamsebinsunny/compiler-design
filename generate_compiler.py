@@ -142,9 +142,7 @@ def analyzer(tokens):
         else:
             print(f"#[ERROR] Syntax Error: Unexpected token {tokens[index]}")
             exit()
-            return
-        # print(index)
-        # print(value_table)
+
 
 def check_condition(condition_tokens, value_table):
     condition_str = ' '.join([token[0] for token in condition_tokens])
