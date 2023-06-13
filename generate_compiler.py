@@ -658,7 +658,6 @@ code = '''
 
 try:
     code.rstrip()
-
     tokens = tokenizer(code)
     analyzer(tokens)
     print("\nSuccess")
