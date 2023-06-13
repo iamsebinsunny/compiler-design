@@ -99,6 +99,7 @@ def tokenizer(code):
         if not match:
             if not code[pos].isspace():  # Check for invalid non-whitespace tokens
                 print(f"Invalid token: {code[pos]}")
+                exit()
                 return None
             pos += 1  # Skip whitespace characters
 
@@ -258,6 +259,7 @@ def analyze_print_statement(tokens, index, value_table):
                         print(value_table[identifier])
                     else:
                         print(f"Runtime Error: Undefined variable '{identifier}'")
+                        exit()
                         return index
                 else:
                     print("#[ERROR] Syntax Error: Invalid print statement argument")
@@ -281,6 +283,7 @@ def analyze_print_statement(tokens, index, value_table):
                                 print(value_table[identifier])
                             else:
                                 print(f"Runtime Error: Undefined variable '{identifier}'")
+                                exit()
                                 return index
                         else:
                             print("\n#[ERROR] Syntax Error: Invalid print statement argument")
