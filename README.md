@@ -14,7 +14,7 @@
 - hardcode lopping statements - parse_looping_statement
 - while loop condition
 
-- #call by value check and fix function syntax - parse_fucntion_call
+- call by value check and fix function syntax - parse_fucntion_call
 
 - print statement working
 - testcase without quote

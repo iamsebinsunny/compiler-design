@@ -164,7 +164,8 @@ def check_condition(condition_tokens, value_table):
 
     except Exception as e:
 
-        print("Error: Invalid condition expression:", e)
+        print("\nError: Invalid condition expression")
+        exit()
 
         return False
 
