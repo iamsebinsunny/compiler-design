@@ -634,7 +634,7 @@ def analyze_assign_statements(tokens, index, value_table):
 
 code = '''
     print("Welcome to our C compiler");
-    float a == 5.0;
+    float a = 5.0;
     int b = 10;
     float c = (a+b)*2;
     print(c);
