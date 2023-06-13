@@ -645,7 +645,7 @@ code = '''
     }
     def add(int x, int y){
         int sum = x + y;
-        print("Sum is" + sum)
+        print("Sum is" + sum);
     }
     add(5,4);
     while(b>c){
