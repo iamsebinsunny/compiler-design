@@ -1,6 +1,4 @@
-import os
 import re
-import sys
 
 # Token types
 INTEGER_TYPE = 'INTEGER_TYPE'
